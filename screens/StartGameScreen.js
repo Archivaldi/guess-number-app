@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Button, TouchableWithoutFeedback, Keyboard, Ale
 
 import Card from '../components/Card';
 import Input from '../components/Input';
+import NumberContainer from '../components/NumberContainer';
 
 import Colors from "../constants/Colors";
 
@@ -23,19 +24,25 @@ const StartGameScreen = props => {
 
     const confirmInputHandler = () => {
         const chosenNumber = parseInt(enteredValue);
-        if (chosenNumber === NaN || chosenNumber <= 0 || chosenNumber > 99){ 
+        if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99){ 
             Alert.alert('Invalid Number!', 'Number should be between 1 and 99', [{text: 'Okay', style: 'destructive', onPress: resetImputHandler}])
             return;
         }
 
         setConfirmed(true);
         setSelectedNumber(chosenNumber);
+        Keyboard.dismiss()
     };
 
     let confirmedOutput;
 
     if (confirmed){
-        confirmedOutput = <Text>Chosen Number: {selectedNumber}</Text>
+        confirmedOutput =
+        <Card style={styles.numberConteiner}>
+            <Text>You selected: </Text>
+            <NumberContainer>{selectedNumber}</NumberContainer>
+            <Button title={'START GAME'} />
+        </Card>
     }
     return (
         <TouchableWithoutFeedback onPress={()=>{Keyboard.dismiss()}}>
@@ -82,6 +89,10 @@ const styles = StyleSheet.create({
     input: {
         width: 50,
         textAlign: 'center'
+    },
+    numberConteiner: {
+        marginTop: 20,
+        alignItems: 'center'
     }
 });
 

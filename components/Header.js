@@ -19,11 +19,12 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.primary,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 30
+        marginTop: 30,
     },
     headerTitle: {
         color: 'black',
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: 'open-sans-bold'
     }
 });
 

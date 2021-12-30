@@ -1,8 +1,10 @@
 import React, {useState, useRef, useEffect} from "react";
-import {View, Text, StyleSheet, Button, Alert} from 'react-native';
+import {View, Text, StyleSheet, Alert} from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 
 import NumberContainer from "../components/NumberContainer";
 import Card from "../components/Card";
+import MainButton from "../components/MainButton";
 import DefaultStyles from "../constants/default-styles";
 
 const generateRandomBetween = (min, max, exclude) => {
@@ -50,8 +52,12 @@ const GameScreen = props => {
             <Text style={DefaultStyles.bodyText}>Opponent's guess: </Text>
             <NumberContainer>{currentGuess}</NumberContainer>
             <Card style={styles.buttonContainer}>
-                <Button title="Lower" onPress={()=>{nextGuessHandler('lower')}}/>
-                <Button title="Greater" onPress={()=>{nextGuessHandler('greater')}}/>
+                <MainButton onPress={()=>{nextGuessHandler('lower')}}>
+                    <AntDesign name='arrowdown' size={24} color="white"/>
+                </MainButton>
+                <MainButton onPress={()=>{nextGuessHandler('greater')}}>
+                    <AntDesign name='arrowup' size={24} color="white"/>
+                </MainButton>
             </Card>
         </View>
     )

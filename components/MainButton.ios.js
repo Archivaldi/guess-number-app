@@ -4,11 +4,13 @@ import Colors from "../constants/Colors";
 
 const MainButton = props => {
     return (
-        <TouchableOpacity onPress={props.onPress}>
-            <View style={styles.button}>
-                <Text style={styles.buttonText}>{props.children}</Text>
-            </View>
-        </TouchableOpacity>
+        <View style={styles.buttonContainer}>
+            <TouchableOpacity onPress={props.onPress}>
+                <View style={styles.button}>
+                    <Text style={styles.buttonText}>{props.children}</Text>
+                </View>
+            </TouchableOpacity>
+        </View>
     )
 };
 
